@@ -8,7 +8,7 @@
 
 ## Checks
 
-- [ ] The folder name matches `name` in the frontmatter and starts with the team prefix
+- [ ] The folder name matches `name` in the frontmatter (team skills come from the Notion sync; edit those in Notion)
 - [ ] No client names, client data, personal data or credentials
 - [ ] No `model` in the frontmatter
 - [ ] If the skill writes, sends or publishes anything, it says so and has `disable-model-invocation: true`

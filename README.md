@@ -79,23 +79,28 @@ Standard skills for widely used tools and frameworks already exist in public col
 
 If you find a community skill worth recommending to everyone at YLD, open a pull request that adds a link to it in this section. Do not copy the files into this repository, as the copy will drift from the original and nobody will maintain it.
 
-## Contributing without git
+## Team skills are written in Notion
 
-You need a GitHub account in the `yldio` organisation, and nothing else.
+Skills with a `design-`, `marketing-`, `cp-` or `general-` prefix are written and edited in the AI Skills page in Notion, one database per team. This repository holds the approved copy. Edits made here to those folders are overwritten by the next sync, so make them in Notion.
 
-### Proposing a new skill
+To add or change a skill:
 
-Open [Propose a skill](https://github.com/yldio/skills/issues/new?template=new-skill.yml), fill in the form and submit it. A bot turns it into a pull request with the `SKILL.md` written for you and comments with the link. A reviewer from your team reads it and merges it, and from then on anyone can install it and run it as a slash command.
+1. Create or open the page in your team's database. Put the full `SKILL.md` in one code block on the page, starting with the frontmatter (`---`, `name:`, `description:`, `---`). `/general-skill-to-notion` writes the page in this shape.
+2. Set **Command** to the skill's name with your team prefix, such as `design-eow-summary`. The sync uses it as the name, whatever the code block says.
+3. Set **Status** to **Ready for review**.
 
-If you are not yet in the organisation, a maintainer adds the `make-pr` label to your issue to start the bot.
+Within the hour a bot opens a pull request, puts its link in the **GitHub** column and sets Status to **In review**. A reviewer for your team (see `.github/CODEOWNERS`) approves and merges it, and the bot sets Status to **Live**. If something is wrong, Status becomes **Needs fix** and the bot comments on the page to say why. Fix it and set Status back to **Ready for review**. While a pull request is open, setting Ready for review again updates it.
 
-### Editing a skill in the browser
+Only `SKILL.md` is synced. Supporting files such as a `references/` folder are added here in the repository by an engineer.
 
-1. Open the skill's folder on GitHub and click `SKILL.md`.
-2. Click the pencil icon, make your change, and click **Commit changes...**.
-3. GitHub offers to create a branch and a pull request. Accept, and add a line saying what you changed and why.
+Setting up the sync (one time, for a Notion workspace owner and a repository admin):
 
-The reviewers for that team are asked automatically (see `.github/CODEOWNERS`). An automatic check confirms the file is in the right shape and tells you on the pull request if it is not.
+1. In Notion, create an internal integration with read content, update content and insert comments capabilities. Share the AI Skills page with it.
+2. Add its secret to this repository as `NOTION_TOKEN` (Settings, Secrets and variables, Actions).
+3. In the organisation's Actions settings, allow GitHub Actions to create pull requests.
+4. Run **Sync skills from Notion** once from the Actions tab to check it.
+
+The databases the sync reads are listed in `.github/notion-sources.json`.
 
 ## Adding or changing a skill
 

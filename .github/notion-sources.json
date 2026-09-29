@@ -1,0 +1,9 @@
+{
+  "_comment": "Notion databases the sync reads, from the AI Skills page. prefix is the team prefix every Command in that database must start with.",
+  "sources": [
+    { "team": "Design", "prefix": "design-", "dataSourceId": "3730dae7-59ea-80ac-a029-000bd93209f9" },
+    { "team": "Marketing", "prefix": "marketing-", "dataSourceId": "7cf0dae7-59ea-82a3-82d4-870aded28336" },
+    { "team": "Client Partner", "prefix": "cp-", "dataSourceId": "7480dae7-59ea-83b8-92c3-07f5d7020aaa" },
+    { "team": "General", "prefix": "general-", "dataSourceId": "c570dae7-59ea-8241-bfae-0756dcb669d1" }
+  ]
+}
