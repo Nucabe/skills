@@ -1,0 +1,15 @@
+# Who reviews changes. The last matching line wins, and one approval from
+# any listed owner is enough.
+
+*               @yldio/skills
+
+/design-*/      @yldio/design @yldio/skills
+
+# No Marketing or Client Partner team exists on GitHub yet. Replace
+# @yldio/skills with the team (or named people) once one is set up.
+/marketing-*/   @yldio/skills
+/cp-*/          @yldio/skills
+
+/general-*/     @yldio/skills
+
+/.github/       @yldio/skills

@@ -79,6 +79,24 @@ Standard skills for widely used tools and frameworks already exist in public col
 
 If you find a community skill worth recommending to everyone at YLD, open a pull request that adds a link to it in this section. Do not copy the files into this repository, as the copy will drift from the original and nobody will maintain it.
 
+## Contributing without git
+
+You need a GitHub account in the `yldio` organisation, and nothing else.
+
+### Proposing a new skill
+
+Open [Propose a skill](https://github.com/yldio/skills/issues/new?template=new-skill.yml), fill in the form and submit it. A bot turns it into a pull request with the `SKILL.md` written for you and comments with the link. A reviewer from your team reads it and merges it, and from then on anyone can install it and run it as a slash command.
+
+If you are not yet in the organisation, a maintainer adds the `make-pr` label to your issue to start the bot.
+
+### Editing a skill in the browser
+
+1. Open the skill's folder on GitHub and click `SKILL.md`.
+2. Click the pencil icon, make your change, and click **Commit changes...**.
+3. GitHub offers to create a branch and a pull request. Accept, and add a line saying what you changed and why.
+
+The reviewers for that team are asked automatically (see `.github/CODEOWNERS`). An automatic check confirms the file is in the right shape and tells you on the pull request if it is not.
+
 ## Adding or changing a skill
 
 1. Create a folder named after the skill, lowercase with hyphens. This name is what people will type.

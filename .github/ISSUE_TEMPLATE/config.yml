@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Edit an existing skill
+    url: https://github.com/yldio/skills#editing-a-skill-in-the-browser
+    about: Open the skill's SKILL.md on GitHub, click the pencil icon, and propose your change.
