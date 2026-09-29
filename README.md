@@ -14,6 +14,20 @@ This repository holds the skills specific to how YLD works, the ones we want eve
 
 The folders follow the open [Agent Skills](https://agentskills.io) format, so they work in Claude Code and in any other tool that supports it.
 
+## Skills by team
+
+Skill names start with the team they belong to, so `/design-` lists every design skill as you type. Skills with no team prefix, such as the forensic ones, are for engineering.
+
+| Prefix | Team | Skills |
+|---|---|---|
+| `design-` | Product Design | `design-compare-ds-components`, `design-component-documentation`, `design-ds-pr-review`, `design-eow-summary`, `design-interview-insights` |
+| `marketing-` | Marketing | `marketing-campaign-plan` |
+| `cp-` | Client Partners | `cp-business-review-prep` |
+| `general-` | Anyone | `general-skill-to-notion` |
+| none | Engineering | `forensic-investigation`, `forensic-report` |
+
+To install one team's skills only, run `npx skills add yldio/skills -g` and pick the ones with your team's prefix from the list.
+
 ## Using the skills
 
 The easiest way is the [skills.sh](https://skills.sh) CLI, which you run with npx so there is nothing to install first. It detects the agents you have and puts each skill where that agent reads from:
@@ -81,7 +95,7 @@ If you find a community skill worth recommending to everyone at YLD, open a pull
 
 ## Adding or changing a skill
 
-1. Create a folder named after the skill, lowercase with hyphens. This name is what people will type.
+1. Create a folder named after the skill, lowercase with hyphens, starting with your team's prefix from [Skills by team](#skills-by-team). This name is what people will type, and it must match `name` in the frontmatter.
 2. Write `SKILL.md` with frontmatter followed by the instructions:
 
    ```markdown
