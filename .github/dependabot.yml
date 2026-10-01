@@ -1,0 +1,30 @@
+version: 2
+
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "07:00"
+      timezone: Europe/Lisbon
+
+    # Let a release age before proposing it. A yanked or compromised
+    # version is usually withdrawn inside this window.
+    cooldown:
+      default-days: 5
+
+    open-pull-requests-limit: 5
+
+    commit-message:
+      prefix: ci
+
+    labels:
+      - dependencies
+      - github-actions
+
+    # One PR for all actions. Fewer reviews, each one reviewed properly.
+    groups:
+      actions:
+        patterns:
+          - "*"
