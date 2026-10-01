@@ -115,7 +115,7 @@ If you find a community skill worth recommending to everyone at YLD, open a pull
    Add an entry for the skill to `.claude-plugin/marketplace.json` as well, after the existing single-skill entries, so it can be added on its own:
 
    ```json
-   { "name": "<skill-name>", "source": "./", "strict": false, "skills": ["./plugins/<plugin>/skills/<skill-name>"], "description": "<first sentence of the skill's description>" }
+   { "name": "<skill-name>", "displayName": "/<skill-name>", "source": "./", "strict": false, "skills": ["./plugins/<plugin>/skills/<skill-name>"], "description": "<first sentence of the skill's description>" }
    ```
 
    For a team that has no plugin yet, add `plugins/yld-<team>/.claude-plugin/plugin.json` (copy an existing one) and an entry for it in `.claude-plugin/marketplace.json`. Check both with `claude plugin validate .`.
