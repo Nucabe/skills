@@ -1,0 +1,6 @@
+{
+  "name": "yld-test",
+  "description": "Test plugin to check that the Claude org sync picks up plugins. Remove after the test.",
+  "version": "0.1.0",
+  "author": { "name": "Manuel Ornelas" }
+}

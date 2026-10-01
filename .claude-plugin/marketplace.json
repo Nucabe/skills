@@ -1,0 +1,12 @@
+{
+  "name": "yld-skills",
+  "owner": { "name": "YLD" },
+  "description": "YLD's Claude skills, grouped by team.",
+  "plugins": [
+    {
+      "name": "yld-test",
+      "source": "./plugins/yld-test",
+      "description": "Test plugin to check that the Claude org sync picks up plugins. Remove after the test."
+    }
+  ]
+}
