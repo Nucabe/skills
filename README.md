@@ -21,12 +21,10 @@ Skills are grouped into one plugin per team, so a team's skills can be installed
 | Plugin | Team | Skills |
 |---|---|---|
 | `yld-engineering` | Engineering | `eli5`, `forensic-investigation`, `forensic-report`, `table-me`, `unslop`, `zoom-out` |
-| `yld-design` | Product Design | `design-compare-ds-components`, `design-component-documentation`, `design-ds-pr-review`, `design-eow-summary`, `design-interview-insights` |
-| `yld-marketing` | Marketing | `marketing-campaign-plan` |
-| `yld-cp` | Client Partners | `cp-business-review-prep` |
-| `yld-general` | Anyone | `general-skill-to-notion` |
-
-Skill names outside engineering start with the team (`design-`, `marketing-`, `cp-`, `general-`).
+| `yld-design` | Product Design | `compare-ds-components`, `component-documentation`, `ds-pr-review`, `eow-summary`, `interview-insights` |
+| `yld-marketing` | Marketing | `campaign-plan` |
+| `yld-cp` | Client Partners | `business-review-prep` |
+| `yld-general` | Anyone | `skill-to-notion` |
 
 Every skill is also listed in `marketplace.json` as a plugin of its own, so people can add one skill without the rest of its team's plugin. Add either the team plugin or the single skill, not both, or the skill will load twice.
 
@@ -41,7 +39,7 @@ Add this repository as a plugin marketplace once, then install the plugins you w
 /plugin install yld-design@yld-skills
 ```
 
-Skills from a plugin are called as `/<plugin>:<skill-name>`, for example `/yld-design:design-eow-summary`. `/plugin marketplace update yld-skills` picks up changes.
+Skills from a plugin are called as `/<plugin>:<skill-name>`, for example `/yld-design:eow-summary`. `/plugin marketplace update yld-skills` picks up changes.
 
 ### With the skills CLI
 
@@ -110,7 +108,7 @@ If you find a community skill worth recommending to everyone at YLD, open a pull
 
 ## Adding or changing a skill
 
-1. Create a folder named after the skill, lowercase with hyphens, in your team's plugin: `plugins/<plugin>/skills/<skill-name>/`. Outside engineering, start the name with your team's prefix. This name is what people will type, and it must match `name` in the frontmatter. Do not put skills at the top level of the repository: they are not part of any plugin, so Claude will not offer them.
+1. Create a folder named after the skill, lowercase with hyphens, in your team's plugin: `plugins/<plugin>/skills/<skill-name>/`. Name it for what it does, without a team prefix, and check no other skill in the repository uses the name. This name is what people will type, and it must match `name` in the frontmatter. Do not put skills at the top level of the repository: they are not part of any plugin, so Claude will not offer them.
 
    Add an entry for the skill to `.claude-plugin/marketplace.json` as well, after the existing single-skill entries, so it can be added on its own:
 

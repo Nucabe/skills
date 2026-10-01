@@ -1,5 +1,5 @@
 ---
-name: design-component-documentation
+name: component-documentation
 description: Reads a design system component set in Figma and writes its documentation frame into the same file, beside the component - anatomy, every property and state, usage, accessibility and nested components. Use when a component set is stable enough to document, or to update an existing doc frame after the component changes.
 disable-model-invocation: true
 ---

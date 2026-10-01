@@ -1,5 +1,5 @@
 ---
-name: design-ds-pr-review
+name: ds-pr-review
 description: Reviews a UI pull request against design system rules and writes one comment grouped by severity. Use when a PR touches UI in a design system component library or an app that consumes it, before a person starts the design review.
 ---
 

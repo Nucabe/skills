@@ -1,5 +1,5 @@
 ---
-name: design-eow-summary
+name: eow-summary
 description: Turns a project's Kanban board (Jira, Notion, Trello or pasted tickets) into a plain text end-of-week update email for stakeholders, grouped by discipline, with a TL;DR, this week's work and next week's plan. Use at the end of the week once the board reflects where things landed.
 ---
 

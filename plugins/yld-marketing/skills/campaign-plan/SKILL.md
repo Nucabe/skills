@@ -1,5 +1,5 @@
 ---
-name: marketing-campaign-plan
+name: campaign-plan
 description: Turns event or campaign inputs (contract, brief, previous plan format, RACI) into a first-draft campaign plan for Notion with objectives, owners, budget and timeline. Use at kick-off of a new event or campaign, before the Notion page is built.
 ---
 

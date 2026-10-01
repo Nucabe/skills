@@ -1,5 +1,5 @@
 ---
-name: general-skill-to-notion
+name: skill-to-notion
 description: Turns a workshop board (a task broken into six blocks, pasted as rough text from Miro) into a finished SKILL.md and a matching Notion skill page in the YLD format. Use when a team has broken a recurring task down and wants it written up as a skill.
 ---
 
@@ -36,16 +36,20 @@ team's own words wherever they are clear; they know the task and you don't.
 
 ## Naming
 
-Skill names start with the team prefix, then a short kebab-case name. The name is
-the slash command, the SKILL.md `name`, and the folder name in the
-`yldio/skills` repository.
+Skill names are a short kebab-case description of what the skill does, with no
+team prefix, for example `eow-summary` or `campaign-plan`. The name is the slash
+command, the SKILL.md `name`, and the folder name in the `yldio/skills`
+repository. Ask the person to check that no other YLD skill already uses it.
 
-| Team | Prefix | Example |
+The team decides which skill suite the skill goes in:
+
+| Team | Suite | Folder |
 |---|---|---|
-| Design | `design-` | `design-eow-summary` |
-| Marketing | `marketing-` | `marketing-campaign-plan` |
-| Client Partner | `cp-` | `cp-business-review-prep` |
-| General (any team) | `general-` | `general-skill-to-notion` |
+| Design | Design / Skill Suite | `plugins/yld-design/skills/` |
+| Marketing | Marketing / Skill Suite | `plugins/yld-marketing/skills/` |
+| Client Partner | Client Partners / Skill Suite | `plugins/yld-cp/skills/` |
+| Engineering | Engineering / Skill Suite | `plugins/yld-engineering/skills/` |
+| Any team | General / Skill Suite | `plugins/yld-general/skills/` |
 
 If the board gives no team, suggest one and ask the person to confirm.
 
@@ -56,7 +60,7 @@ sentences, no code, under 450 words.
 
 ````markdown
 ---
-name: <team-prefix>-<kebab-case-name>
+name: <kebab-case-name>
 description: <one sentence: what it does and when to use it, written so Claude knows when to apply it>
 ---
 
@@ -92,7 +96,7 @@ description: <one sentence: what it does and when to use it, written so Claude k
 Produce the page in this exact order:
 
 1. Title, in the format `/<slash-command> | <Title Case label>`, for example
-   `/marketing-linkedin-monthly-report | Monthly LinkedIn Performance Report`. The
+   `/linkedin-monthly-report | Monthly LinkedIn Performance Report`. The
    slash command is the SKILL.md `name`.
 2. Properties: Ownership, Last Updated
 3. What it is, 2 to 3 plain sentences
@@ -107,7 +111,7 @@ Produce the page in this exact order:
 
 1. Read the whole board. Identify the Task, the Owner, the Team and the six
    blocks. Note which blocks are thin or empty.
-2. Name and title: propose the prefixed kebab-case name and a Title Case label
+2. Name and title: propose the kebab-case name and a Title Case label
    describing what it does.
 3. Write the SKILL.md from the blocks using the mapping above. Do not add steps,
    decisions or rules the team did not say, except the standing ones listed in the
