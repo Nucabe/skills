@@ -14,6 +14,9 @@ concurrency:
 jobs:
   deploy:
     name: Deploy
+    # This file travels with the push. Without this guard the downstream
+    # copy runs it too, against a repo that has none of the secrets.
+    if: github.repository == 'yldio/skills'
     runs-on: ubuntu-latest
     environment: production
     permissions:
