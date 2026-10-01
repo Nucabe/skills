@@ -28,6 +28,8 @@ Skills are grouped into one plugin per team, so a team's skills can be installed
 
 Skill names outside engineering start with the team (`design-`, `marketing-`, `cp-`, `general-`).
 
+Every skill is also listed in `marketplace.json` as a plugin of its own, so people can add one skill without the rest of its team's plugin. Add either the team plugin or the single skill, not both, or the skill will load twice.
+
 ## Using the skills
 
 ### As plugins in Claude Code
@@ -109,6 +111,12 @@ If you find a community skill worth recommending to everyone at YLD, open a pull
 ## Adding or changing a skill
 
 1. Create a folder named after the skill, lowercase with hyphens, in your team's plugin: `plugins/<plugin>/skills/<skill-name>/`. Outside engineering, start the name with your team's prefix. This name is what people will type, and it must match `name` in the frontmatter. Do not put skills at the top level of the repository: they are not part of any plugin, so Claude will not offer them.
+
+   Add an entry for the skill to `.claude-plugin/marketplace.json` as well, after the existing single-skill entries, so it can be added on its own:
+
+   ```json
+   { "name": "<skill-name>", "source": "./", "strict": false, "skills": ["./plugins/<plugin>/skills/<skill-name>"], "description": "<first sentence of the skill's description>" }
+   ```
 
    For a team that has no plugin yet, add `plugins/yld-<team>/.claude-plugin/plugin.json` (copy an existing one) and an entry for it in `.claude-plugin/marketplace.json`. Check both with `claude plugin validate .`.
 2. Write `SKILL.md` with frontmatter followed by the instructions:
