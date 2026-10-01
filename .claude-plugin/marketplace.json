@@ -1,0 +1,12 @@
+{
+  "name": "yld-skills",
+  "owner": { "name": "YLD" },
+  "description": "YLD's Claude skills, one plugin per team. Install a team's plugin to get all of its skills.",
+  "plugins": [
+    { "name": "yld-engineering", "source": "./plugins/yld-engineering", "description": "YLD engineering skills: investigations, reports and ways to reframe work for different readers." },
+    { "name": "yld-design", "source": "./plugins/yld-design", "description": "YLD Product Design skills: design system work, research synthesis and project updates." },
+    { "name": "yld-marketing", "source": "./plugins/yld-marketing", "description": "YLD Marketing skills: campaign and event planning." },
+    { "name": "yld-cp", "source": "./plugins/yld-cp", "description": "YLD Client Partner skills: client business reviews." },
+    { "name": "yld-general", "source": "./plugins/yld-general", "description": "YLD skills for any team, including writing new skills." }
+  ]
+}

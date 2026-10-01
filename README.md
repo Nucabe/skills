@@ -14,7 +14,34 @@ This repository holds the skills specific to how YLD works, the ones we want eve
 
 The folders follow the open [Agent Skills](https://agentskills.io) format, so they work in Claude Code and in any other tool that supports it.
 
+## How the skills are organised
+
+Skills are grouped into one plugin per team, so a team's skills can be installed together. Each plugin lives in `plugins/<plugin>/` and holds its skills in `plugins/<plugin>/skills/<skill-name>/SKILL.md`. The list of plugins is in `.claude-plugin/marketplace.json`.
+
+| Plugin | Team | Skills |
+|---|---|---|
+| `yld-engineering` | Engineering | `eli5`, `forensic-investigation`, `forensic-report`, `table-me`, `unslop`, `zoom-out` |
+| `yld-design` | Product Design | `design-compare-ds-components`, `design-component-documentation`, `design-ds-pr-review`, `design-eow-summary`, `design-interview-insights` |
+| `yld-marketing` | Marketing | `marketing-campaign-plan` |
+| `yld-cp` | Client Partners | `cp-business-review-prep` |
+| `yld-general` | Anyone | `general-skill-to-notion` |
+
+Skill names outside engineering start with the team (`design-`, `marketing-`, `cp-`, `general-`).
+
 ## Using the skills
+
+### As plugins in Claude Code
+
+Add this repository as a plugin marketplace once, then install the plugins you want. Each plugin brings all of its team's skills:
+
+```sh
+/plugin marketplace add yldio/skills
+/plugin install yld-design@yld-skills
+```
+
+Skills from a plugin are called as `/<plugin>:<skill-name>`, for example `/yld-design:design-eow-summary`. `/plugin marketplace update yld-skills` picks up changes.
+
+### With the skills CLI
 
 The easiest way is the [skills.sh](https://skills.sh) CLI, which you run with npx so there is nothing to install first. It detects the agents you have and puts each skill where that agent reads from:
 
@@ -59,14 +86,14 @@ Link the skills you want into the directory your tool reads from. Claude Code re
 
 ```sh
 mkdir -p ~/.claude/skills
-ln -s ~/yld/skills/<skill-name> ~/.claude/skills/<skill-name>
+ln -s ~/yld/skills/plugins/<plugin>/skills/<skill-name> ~/.claude/skills/<skill-name>
 ```
 
 To make all of them available at once:
 
 ```sh
 mkdir -p ~/.claude/skills
-for d in ~/yld/skills/*/; do
+for d in ~/yld/skills/plugins/*/skills/*/; do
   ln -sfn "$d" ~/.claude/skills/$(basename "$d")
 done
 ```
@@ -81,7 +108,9 @@ If you find a community skill worth recommending to everyone at YLD, open a pull
 
 ## Adding or changing a skill
 
-1. Create a folder named after the skill, lowercase with hyphens. This name is what people will type.
+1. Create a folder named after the skill, lowercase with hyphens, in your team's plugin: `plugins/<plugin>/skills/<skill-name>/`. Outside engineering, start the name with your team's prefix. This name is what people will type, and it must match `name` in the frontmatter. Do not put skills at the top level of the repository: they are not part of any plugin, so Claude will not offer them.
+
+   For a team that has no plugin yet, add `plugins/yld-<team>/.claude-plugin/plugin.json` (copy an existing one) and an entry for it in `.claude-plugin/marketplace.json`. Check both with `claude plugin validate .`.
 2. Write `SKILL.md` with frontmatter followed by the instructions:
 
    ```markdown
@@ -104,7 +133,7 @@ If you find a community skill worth recommending to everyone at YLD, open a pull
    ---
    ```
 
-   The agent will then never start the skill on its own. The only way to run it is to type `/deploy-production`. Use this for anything with side effects, such as deploying, publishing or sending messages, where the agent guessing wrong would cost something.
+   The agent will then never start the skill on its own. The only way to run it is to type its command, for example `/yld-engineering:deploy-production`. Use this for anything with side effects, such as deploying, publishing or sending messages, where the agent guessing wrong would cost something.
 4. Put helper scripts in `scripts/`, templates in `assets/` and background reading in `references/`.
 5. Try it on a real task before opening a pull request. Put the prompt you used and what came out in the PR description.
 6. Open a pull request against `main`.
