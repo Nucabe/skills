@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+#MISE description="Force-push HEAD to main on the distribution target"
+#USAGE flag "--target <host:owner/name>" env="DEPLOYMENT_TARGET" required=#true help="Target repository, with no scheme, no \"git@\" prefix and no \".git\" suffix"
+#
+# The private SSH deploy key of the target repository comes only from
+# the DEPLOYMENT_KEY environment variable. A flag would put the key in
+# the process list.
+
+set -euo pipefail
+IFS=$'\n\t'
+
+# Pinned GitHub host key. Public data, safe on disk.
+readonly GITHUB_HOST_KEY='github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl'
+
+# Global, so that the EXIT trap can still read it after main returns.
+workdir=""
+
+cleanup() {
+  if [ -n "${SSH_AGENT_PID:-}" ]; then
+    ssh-agent -k > /dev/null 2>&1 || true
+  fi
+  if [ -n "$workdir" ]; then
+    rm -rf "$workdir"
+  fi
+}
+
+# Fail early and clearly when a secret is missing. GitHub passes an
+# absent secret as an empty string. set -u and required=#true both
+# accept an empty string.
+check_inputs() {
+  : "${DEPLOYMENT_KEY:?is not set}"
+  : "${usage_target:?--target or DEPLOYMENT_TARGET is not set}"
+}
+
+# Push only what is on main. A force-push from a feature branch, or from
+# a main with unpushed commits, would publish unreviewed work. Fetch
+# first, because a stale origin/main would rewind the target.
+# This runs before configure_ssh, so the fetch uses the normal SSH setup.
+check_head() {
+  git fetch --quiet origin +refs/heads/main:refs/remotes/origin/main
+
+  local head main
+  head=$(git rev-parse HEAD)
+  main=$(git rev-parse refs/remotes/origin/main)
+  if [ "$head" != "$main" ]; then
+    echo "HEAD ($head) is not origin/main ($main). Check out origin/main, then run again." >&2
+    return 1
+  fi
+}
+
+# The key lives in a private agent only. It is never written to disk.
+start_agent() {
+  eval "$(ssh-agent -s)" > /dev/null
+  printf '%s\n' "$DEPLOYMENT_KEY" | ssh-add - > /dev/null 2>&1
+}
+
+# The host key goes in a temporary file, so a local run does not change
+# ~/.ssh/known_hosts. -F /dev/null ignores ~/.ssh/config, so an
+# IdentityAgent setting there cannot replace the private agent.
+configure_ssh() {
+  printf '%s\n' "$GITHUB_HOST_KEY" > "$workdir/known_hosts"
+  export GIT_SSH_COMMAND="ssh -F /dev/null -o UserKnownHostsFile=$workdir/known_hosts -o StrictHostKeyChecking=yes"
+}
+
+main() {
+  check_inputs
+  check_head
+
+  workdir=$(mktemp -d)
+  trap cleanup EXIT
+
+  start_agent
+  configure_ssh
+
+  git push --force "git@${usage_target}.git" HEAD:refs/heads/main
+}
+
+main "$@"

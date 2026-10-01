@@ -12,7 +12,7 @@ updates:
     # Let a release age before proposing it. A yanked or compromised
     # version is usually withdrawn inside this window.
     cooldown:
-      default-days: 5
+      default-days: 7
 
     open-pull-requests-limit: 5
 

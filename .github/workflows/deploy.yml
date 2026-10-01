@@ -21,6 +21,8 @@ jobs:
     environment: production
     permissions:
       contents: read
+    env:
+      MISE_TRUSTED_CONFIG_PATHS: ${{ github.workspace }}
 
     steps:
       - name: Check out the full history of main
@@ -29,27 +31,22 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
+      # The deploy task needs no tools from mise.toml, so install none.
+      # No cache, so a cache that another workflow wrote cannot reach the
+      # job that holds the deploy key.
+      - name: Install mise
+        uses: jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492 # v5.0.1
+        with:
+          version: 2026.9.18
+          # SHA-256 of the linux-x64 mise binary, from SHASUMS256.txt in the release.
+          sha256: d24fe0bf7e613824ad99f7b8dac3f2b381a37b9f75f84dd250855217095a8de4
+          install: false
+          cache: false
+
       - name: Deploy
         env:
           DEPLOYMENT_KEY: ${{ secrets.DEPLOYMENT_KEY }}
           # Format: host:owner/name - no scheme, no "git@" prefix, no ".git" suffix.
           DEPLOYMENT_TARGET: ${{ secrets.DEPLOYMENT_TARGET }}
-        run: |
-          set -euo pipefail
-
-          # Fail early and clearly when the environment is missing a secret.
-          # An absent secret arrives as an empty string, which set -u ignores.
-          : "${DEPLOYMENT_KEY:?secret is not set}"
-          : "${DEPLOYMENT_TARGET:?secret is not set}"
-
-          # Pinned GitHub host key. Public data, safe on disk.
-          mkdir -p ~/.ssh && chmod 700 ~/.ssh
-          printf '%s\n' 'github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl' \
-            > ~/.ssh/known_hosts
-
-          # The key lives in the agent only. It is never written to disk.
-          eval "$(ssh-agent -s)" > /dev/null
-          trap 'ssh-agent -k > /dev/null 2>&1 || true' EXIT
-          printf '%s\n' "$DEPLOYMENT_KEY" | ssh-add - > /dev/null 2>&1
-
-          git push --force "git@${DEPLOYMENT_TARGET}.git" HEAD:refs/heads/main
+          MISE_TASK_RUN_AUTO_INSTALL: "false"
+        run: mise run deploy

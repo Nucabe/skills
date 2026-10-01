@@ -1,0 +1,9 @@
+# Tools for CI and local runs. Tasks are in .mise/tasks/.
+# mise.lock pins the checksum of each tool for each platform.
+
+[tools]
+"aqua:jqlang/jq" = "1.8.1"
+"aqua:trufflesecurity/trufflehog" = "3.97.9"
+
+[settings]
+lockfile = true
