@@ -1,5 +1,6 @@
 {
   "name": "yld-general",
+  "displayName": "YLD General",
   "description": "YLD skills for any team, including writing new skills.",
   "version": "1.0.0",
   "author": { "name": "YLD" }
