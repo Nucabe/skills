@@ -23,7 +23,7 @@ collection time are evidence items `00-*`. Tool versions: <exact versions>.
 tables live in `../analysis/`, produced by `../scripts/analyse.<ext>`, which
 makes no API calls. Verify:
 
-```
+```text
 shasum -a 256 -c SHA256SUMS
 ```
 

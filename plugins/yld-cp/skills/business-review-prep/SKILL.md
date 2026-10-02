@@ -14,6 +14,7 @@ authorisation, and that you are working in the right account, before you attach
 anything.
 
 ## You need
+
 - The timeframe the review covers
 - What the client wants to see and what they value most
 - Documentation, including engineering documentation, and client context
@@ -26,6 +27,7 @@ anything.
 - The next steps from the past business review
 
 ## Steps
+
 1. State what the input covers and what it doesn't.
 2. Confirm what the client wants and the timeframe covered.
 3. Decide what the client values most.
@@ -36,17 +38,20 @@ anything.
 8. List anything you were unsure about.
 
 ## Decisions and defaults
+
 - How far the review is tailored to the client, some delivery focussed, some team
   focussed. Default: ask before proceeding.
 - Which sections to include, picked from a list. Default: ask before proceeding.
 
 ## Output
+
 Text. A draft of the slide content for 15 to 30 slides. Each slide has a title and
 its content as text, a table or a described figure. Written for the client's
 senior executives and aligned with the brand guidelines. The review is presented
 first, then shared with the client.
 
 ## Never do this
+
 - Do not leave gaps in content. If the input doesn't cover an area, say so.
 - Do not prioritise items the client doesn't value.
 - Do not use outdated information. Keep the history of systems apart from the
@@ -61,6 +66,7 @@ first, then shared with the client.
   findings only.
 
 ## Before it goes out
+
 - Every figure checked against its source, including CSAT, Team NPS and the
   commercial numbers.
 - The timeframe is right and nothing from older system history is presented as

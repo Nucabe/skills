@@ -9,7 +9,7 @@ are in `REFERENCES.md`.
 
 ### The shape
 
-```
+```text
 prepare → preserve → collect → examine → analyse → report → review → close
 ─────────────────────────────────────────────────────────────────────────
 documentation and chain of custody run underneath every phase, continuously
@@ -101,7 +101,7 @@ and believable to a non-specialist.
 
 ### Why the package has three layers
 
-```
+```text
 evidence/  raw, unmodified, hashed     ← what happened
 analysis/  derived by one script,      ← the arithmetic
            no network calls
@@ -137,8 +137,8 @@ Honest reports disclose these even when nobody asks (NIST IR 8354):
    exactly what you did and what it changed.
 3. Keep an audit trail complete enough that an independent third party could
    repeat the process and reach the same result.
-4. One named person carries overall responsibility for the investigation
-   staying within these principles and the law.
+4. One named person is responsible for keeping the whole investigation
+   within these principles and the law.
 
 ### Bias is a working condition, not a character flaw
 

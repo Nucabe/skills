@@ -38,7 +38,7 @@ how it was contained, and what remains unknown. Bold the key numbers.>
 
 ## Layout
 
-```
+```text
 <package-root>/
 ├── README.md              this file
 ├── POSTMORTEM.md          blameless organisational postmortem
@@ -56,7 +56,7 @@ how it was contained, and what remains unknown. Bold the key numbers.>
 
 ## Reproducing this
 
-```
+```text
 <auth command>                 # read-only role, no elevation
 ./scripts/collect.sh           # raw captures into evidence/
 ./scripts/analyse.<ext>        # evidence/ -> analysis/  (no API calls)

@@ -107,12 +107,16 @@ and a considered set of alternatives.
 
 ## Step 4 — Build the timeline
 
+<!-- vale YLD.BannedWords = NO -->
+
 1. One row per event, every row cites its evidence file, every row labelled
    [F] fact / [A] assessment / [R] reported.
 2. Group into phases. Bold the pivotal rows. Keep uneventful rows where the
    flat line is itself a finding.
 3. Assessments go in blockquotes under the phase, with confidence, reasoning
    and what would falsify them — not mixed into the fact rows.
+
+<!-- vale YLD.BannedWords = YES -->
 
 Done when: a reader can rebuild the story from the rows alone, and can tell at
 a glance which rows are records and which are inference.

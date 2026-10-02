@@ -6,10 +6,12 @@ description: Reviews a UI pull request against design system rules and writes on
 # Design System PR Review
 
 ## When to use
+
 A pull request touches UI in a design system component library or an app that
 consumes it. Run it before a person starts the design review, not instead of it.
 
 ## You need
+
 - The PR diff, with enough surrounding code to show how components are composed
 - The repo type: component library or consuming app
 - The design system: components, tokens (Tailwind config or CSS variables) and
@@ -19,6 +21,7 @@ consumes it. Run it before a person starts the design review, not instead of it.
   the Figma MCP)
 
 ## Steps
+
 1. State what the input covers and what it doesn't.
 2. Load the rule profile for the repo type.
 3. Pick out the files in the diff that touch UI.
@@ -38,6 +41,7 @@ consumes it. Run it before a person starts the design review, not instead of it.
 12. List anything you were unsure about.
 
 ## Decisions and defaults
+
 - Which rule profile applies. Default: ask before proceeding.
 - What blocks merge, what is a warning, what is a nit. Default: ask before
   proceeding.
@@ -51,12 +55,14 @@ consumes it. Run it before a person starts the design review, not instead of it.
 - Suggest fixes only, or also push commits. Default: ask before proceeding.
 
 ## Output
+
 One PR comment, in this order: rule profile used and a pass or fail line; findings
 under Blocking, Should fix and Nit, each with file and line, rule broken, why it
 matters and a suggested fix; breaking changes (library profile only); what
 couldn't be checked, such as runtime contrast or animation; uncertainties.
 
 ## Never do this
+
 - Do not apply a rule profile without confirming the repo type.
 - Do not flag legitimate exceptions as violations.
 - Do not treat a Figma file as the source of truth. Report drift for a designer.
@@ -69,6 +75,7 @@ couldn't be checked, such as runtime contrast or animation; uncertainties.
   say so and leave a placeholder.
 
 ## Before it goes out
+
 - A reviewer opens two or three of the blocking findings in the diff and confirms
   the file, line and rule are right, and that each suggested fix uses a component,
   prop or token that exists in Storybook.
