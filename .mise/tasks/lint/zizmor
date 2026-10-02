@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+#MISE description="Audit the GitHub workflows and Dependabot config with zizmor"
+#
+# zizmor reads a GitHub token from GH_TOKEN, GITHUB_TOKEN or
+# ZIZMOR_GITHUB_TOKEN. Without a token, it skips the online audits and
+# prints a warning. For a full local run:
+#   GH_TOKEN=$(gh auth token) mise run lint:zizmor
+#
+# In GitHub Actions, each finding is an annotation on its file and line.
+
+set -euo pipefail
+IFS=$'\n\t'
+
+main() {
+  cd "$(git rev-parse --show-toplevel)"
+
+  local args=(--persona=auditor)
+  if [ "${GITHUB_ACTIONS:-}" = true ]; then
+    args+=(--format=github)
+  fi
+
+  zizmor "${args[@]}" .github/
+}
+
+main "$@"
