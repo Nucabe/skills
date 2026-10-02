@@ -3,7 +3,9 @@
 
 [tools]
 "aqua:jqlang/jq" = "1.8.1"
+"aqua:koalaman/shellcheck" = "0.11.0"
 "aqua:trufflesecurity/trufflehog" = "3.97.9"
+"aqua:zizmorcore/zizmor" = "1.30.1"
 
 [settings]
 lockfile = true

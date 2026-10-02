@@ -1,0 +1,52 @@
+name: shellcheck
+
+# Run only when a mise task, or the tool versions, change.
+on:
+  pull_request:
+    paths:
+      - .mise/tasks/**
+      - mise.toml
+      - mise.lock
+      - .github/workflows/shellcheck.yml
+  push:
+    branches: [main]
+    paths:
+      - .mise/tasks/**
+      - mise.toml
+      - mise.lock
+      - .github/workflows/shellcheck.yml
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: shellcheck-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  shellcheck:
+    name: shellcheck
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      MISE_TRUSTED_CONFIG_PATHS: ${{ github.workspace }}
+      # Install only the tools this job uses.
+      MISE_TASK_RUN_AUTO_INSTALL: "false"
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install mise, shellcheck and jq
+        uses: jdx/mise-action@7a4e45a543138629540c9a1616d08632b893e492 # v5.0.1
+        with:
+          version: 2026.9.18
+          # SHA-256 of the linux-x64 mise binary, from SHASUMS256.txt in the release.
+          sha256: d24fe0bf7e613824ad99f7b8dac3f2b381a37b9f75f84dd250855217095a8de4
+          install_args: aqua:koalaman/shellcheck aqua:jqlang/jq
+
+      - name: Check mise tasks
+        run: mise run lint:shellcheck
