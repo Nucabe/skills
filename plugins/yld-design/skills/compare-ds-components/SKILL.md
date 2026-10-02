@@ -1,5 +1,5 @@
 ---
-name: design-compare-ds-components
+name: compare-ds-components
 description: Compares the same component (button, input, tabs, card) across two design systems from their Figma frames and writes a gap analysis with requirements to bring one system up to par. Use at the start of a multi-system audit or merge, one component at a time, before proposing a unified structure.
 ---
 

@@ -1,5 +1,5 @@
 ---
-name: design-interview-insights
+name: interview-insights
 description: Turns a client interview or discovery call transcript into a list of every problem and need raised, each attributed to the person who said it, with a second pass for anything missed and a list of unclear comments. Use after a client interview when you have the transcript or recording.
 ---
 

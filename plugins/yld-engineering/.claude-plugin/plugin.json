@@ -1,5 +1,6 @@
 {
   "name": "yld-engineering",
+  "displayName": "Engineering / Skill Suite",
   "description": "YLD engineering skills: investigations, reports and ways to reframe work for different readers.",
   "version": "1.0.0",
   "author": { "name": "YLD" }
