@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+#MISE description="Copy each skill into its single-skill plugin, or check the copies"
+#USAGE flag "--check" help="Fail when a copy differs from its team plugin, instead of copying"
+#
+# Each skill lives in its team plugin, plugins/yld-<team>/skills/<skill>.
+# Claude offers a skill on its own only when the skill has a plugin folder
+# of its own, plugins/<skill>/, and the organisation sync does not follow
+# symlinks. So each single-skill plugin holds a copy of the skill. Edit the
+# team plugin's version only, then run this task to refresh the copies.
+
+set -euo pipefail
+IFS=$'\n\t'
+
+readonly PLUGINS_DIR=plugins
+
+# Print one "<team plugin skill><TAB><copy>" line per single-skill plugin.
+pairs() {
+  local plugin name source
+  for plugin in "$PLUGINS_DIR"/*/; do
+    plugin=${plugin%/}
+    name=$(basename "$plugin")
+    case "$name" in
+      yld-*) continue ;;
+    esac
+    source=$(find "$PLUGINS_DIR" -mindepth 3 -maxdepth 3 -type d \
+      -path "$PLUGINS_DIR/yld-*/skills/$name" -print -quit)
+    if [ -z "$source" ]; then
+      echo "No team plugin has a skill called $name ($PLUGINS_DIR/yld-*/skills/$name)." >&2
+      return 1
+    fi
+    printf '%s\t%s\n' "$source" "$plugin/skills/$name"
+  done
+}
+
+# Fail when the copy is a symlink, is missing, or differs from the source.
+check() {
+  local source=$1 copy=$2
+  if [ -L "$copy" ]; then
+    echo "$copy is a symlink. The Claude sync does not follow symlinks. Run: mise run singles" >&2
+    return 1
+  fi
+  if ! diff -r "$source" "$copy" > /dev/null 2>&1; then
+    echo "$copy differs from $source. Edit $source only, then run: mise run singles" >&2
+    return 1
+  fi
+}
+
+copy() {
+  local source=$1 copy=$2
+  rm -rf "$copy"
+  mkdir -p "$(dirname "$copy")"
+  cp -R "$source" "$copy"
+}
+
+main() {
+  cd "$(git rev-parse --show-toplevel)"
+
+  local list status=0 source target
+  list=$(pairs)
+  while IFS=$'\t' read -r source target; do
+    if [ "${usage_check:-false}" = true ]; then
+      check "$source" "$target" || status=1
+    else
+      copy "$source" "$target"
+    fi
+  done <<< "$list"
+  return "$status"
+}
+
+main "$@"

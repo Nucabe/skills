@@ -26,7 +26,7 @@ Skills are grouped into one plugin per team, so a team's skills can be installed
 | `yld-cp` | Client Partners | `business-review-prep` |
 | `yld-general` | Anyone | `skill-to-notion` |
 
-Every skill is also a plugin of its own, so people can add one skill without the rest of its team's plugin. These single-skill plugins live in `plugins/<skill-name>/`, and their `skills/<skill-name>` folder is a symlink to the skill in its team plugin, so each skill has one source. Add either the team plugin or the single skill, not both, or the skill will load twice.
+Every skill is also a plugin of its own, so people can add one skill without the rest of its team's plugin. These single-skill plugins live in `plugins/<skill-name>/`, and their `skills/<skill-name>` folder is a copy of the skill from its team plugin. Claude's organisation sync does not follow symlinks, so it has to be a real copy. The team plugin's version is the source: edit only that one, then run `mise run singles` to refresh the copies. CI fails when a copy is out of date. Add either the team plugin or the single skill, not both, or the skill will load twice.
 
 ## Using the skills
 
@@ -110,20 +110,15 @@ If you find a community skill worth recommending to everyone at YLD, open a pull
 
 1. Create a folder named after the skill, lowercase with hyphens, in your team's plugin: `plugins/<plugin>/skills/<skill-name>/`. Name it for what it does, without a team prefix, and check no other skill in the repository uses the name. This name is what people will type, and it must match `name` in the frontmatter. Do not put skills at the top level of the repository: they are not part of any plugin, so Claude will not offer them.
 
-   Then make it available on its own as well. Create `plugins/<skill-name>/.claude-plugin/plugin.json` (copy one from another single-skill plugin, such as `plugins/eow-summary/`) and link the skill folder into it:
-
-   ```sh
-   mkdir -p plugins/<skill-name>/skills
-   ln -s ../../<plugin>/skills/<skill-name> plugins/<skill-name>/skills/<skill-name>
-   ```
-
-   On Windows without symlink support, `git update-index --add --cacheinfo 120000,$(printf '%s' '../../<plugin>/skills/<skill-name>' | git hash-object -w --stdin),plugins/<skill-name>/skills/<skill-name>` records the same symlink. Then add an entry after the existing single-skill entries in `.claude-plugin/marketplace.json`:
+   Then make it available on its own as well. Create `plugins/<skill-name>/.claude-plugin/plugin.json` (copy one from another single-skill plugin, such as `plugins/eow-summary/`), and run `mise run singles`, which copies the skill folder into it. Then add an entry after the existing single-skill entries in `.claude-plugin/marketplace.json`:
 
    ```json
    { "name": "<skill-name>", "displayName": "/<skill-name>", "source": "./plugins/<skill-name>", "description": "<first sentence of the skill's description>" }
    ```
 
-   Claude only offers plugins that have their own folder and `plugin.json`; an entry in `marketplace.json` alone is not enough.
+   Claude only offers plugins that have their own folder and `plugin.json`; an entry in `marketplace.json` alone is not enough, and neither is a symlink to the skill.
+
+   When you change an existing skill, edit it in its team plugin and run `mise run singles` before you commit, so its single-skill copy matches.
 
    For a team that has no plugin yet, add `plugins/yld-<team>/.claude-plugin/plugin.json` (copy an existing one) and an entry for it in `.claude-plugin/marketplace.json`. Check both with `claude plugin validate .`.
 2. Write `SKILL.md` with frontmatter followed by the instructions:
