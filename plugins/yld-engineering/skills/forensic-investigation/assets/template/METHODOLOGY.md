@@ -41,7 +41,7 @@ repository; posts to external services.>
 
 ## 3. Collection
 
-```
+```text
 scripts/collect.sh        all raw captures -> evidence/     (read-only API calls)
 scripts/analyse.<ext>     evidence/ -> analysis/            (NO API CALLS)
 scripts/manifest.<ext>    regenerates evidence/MANIFEST.md  (NO API CALLS)
@@ -60,7 +60,7 @@ Negative results (zero-event captures) are stored as evidence, not omitted.
 Hashes: `evidence/SHA256SUMS`, covering every artefact including the analysis
 tables and this package's documents at time of issue. Verify:
 
-```
+```text
 (cd evidence && shasum -a 256 -c SHA256SUMS)
 ```
 

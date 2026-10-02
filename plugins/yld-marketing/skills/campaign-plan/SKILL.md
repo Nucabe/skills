@@ -6,16 +6,19 @@ description: Turns event or campaign inputs (contract, brief, previous plan form
 # Campaign Plan in Notion
 
 ## When to use
+
 At the start of a new event or campaign, once the brief and previous-plan
 reference are ready, and before the Notion page is built.
 
 ## You need
+
 - The event contract or brief specifying deliverables
 - The event URL or key info source
 - A previous project plan to use as the format reference
 - The RACI for key responsibilities
 
 ## Steps
+
 1. State what the input covers and what it doesn't.
 2. Confirm responsibilities, key deliverables and required resources from the
    kick-off.
@@ -28,6 +31,7 @@ reference are ready, and before the Notion page is built.
 8. List anything you were unsure about.
 
 ## Decisions and defaults
+
 - Objectives differ by event type (own event vs external sponsorship). Default:
   ask before proceeding.
 - Timeline expectations. Default: ask before proceeding.
@@ -36,11 +40,13 @@ reference are ready, and before the Notion page is built.
   proceeding.
 
 ## Output
+
 Text, in this order: coverage note; objectives (internal and external-facing);
 action owner and dependencies; budget with clear totals; project plan linking out
 to the comms draft doc; event timeline with key deliverable dates; uncertainties.
 
 ## Never do this
+
 - Do not set budgets or timelines that ignore production lead times, or that make
   the whole plan late by default.
 - Do not assume stakeholders will follow the plan without flagging what happens if
@@ -54,6 +60,7 @@ to the comms draft doc; event timeline with key deliverable dates; uncertainties
   beyond the RACI itself; aggregates and role-level findings only elsewhere.
 
 ## Before it goes out
+
 - Every action owner and dependent checked against the RACI by hand.
 - Objectives still match what was agreed in the kick-off, not an earlier draft.
 - Budget totals read against the contract.

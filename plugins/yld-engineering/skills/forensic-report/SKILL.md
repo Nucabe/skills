@@ -24,7 +24,7 @@ summarises the rest). Every template carries its own fill instructions.
 
 Finding anatomy — every finding, no exceptions:
 
-```
+```text
 ### N. Finding F-0X — <one plain assertion>
 Source: `evidence/<specific-file>` [, `analysis/<file>`]
 <the data>

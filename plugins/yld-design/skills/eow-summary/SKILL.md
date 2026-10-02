@@ -6,14 +6,17 @@ description: Turns a project's Kanban board (Jira, Notion, Trello or pasted tick
 # Write an End-of-Week Project Summary
 
 ## Role
+
 You write an end-of-week project summary email from a Kanban board, for
 stakeholders of varying seniority and discipline.
 
 ## Objective
+
 Turn the board into a plain text update covering what was done or progressed this
 week and what will be worked on next week.
 
 ## You need
+
 - A link to the project Kanban board, or pasted ticket content. The board may be
   in Jira, Notion, Trello or another tool. If a board link is given and a
   connector for that tool is available, read the board directly; otherwise ask the
@@ -21,6 +24,7 @@ week and what will be worked on next week.
 - Who the stakeholders are.
 
 ## Steps
+
 1. Identify tickets that moved into In Progress or Done over the past week. Write
    a brief summary of each task and its progress.
 2. Identify tickets in To Do that will be worked on next week. Write a brief
@@ -29,6 +33,7 @@ week and what will be worked on next week.
 4. Draft the email following the Output format below.
 
 ## Constraints
+
 - Depth per task: default to one or two sentences. Expand only where a task is
   significant or the user asks.
 - Technical jargon: match the stakeholders. For senior or cross-discipline
@@ -44,6 +49,7 @@ week and what will be worked on next week.
   the week's work, then follow the same steps.
 
 ## Output format
+
 A plain text email, structured as follows:
 
 1. Introduction. Always open with this exact message:
@@ -52,7 +58,6 @@ A plain text email, structured as follows:
    This weekly update is intended to keep everyone aligned on progress, share
    early insights, and highlight where your input can help shape the work as we
    move forward.
-
 2. TL;DR. A short summary of the week, a few sentences, readable at a glance.
 3. This week. The body. Group by discipline, with each discipline as a heading.
    Under each, separate tasks into Done and In Progress, each task as a bullet
@@ -61,6 +66,7 @@ A plain text email, structured as follows:
 5. Sign off. Always close with a sign-off message.
 
 ## Before it goes out
+
 - Re-check the status of the tasks against the board, in case it is out of date,
   and add any context the board does not reflect.
 - The intro came through word for word.

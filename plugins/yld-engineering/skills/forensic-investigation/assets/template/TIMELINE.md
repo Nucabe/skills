@@ -16,11 +16,15 @@ Legend — **[F]** established fact · **[A]** assessment · **[R]** reported (t
 
 ## Phase 0 — <baseline / environment established> (<date range>)
 
+<!-- vale YLD.BannedWords = NO -->
+
 | Time (UTC) | Event | Src | Evidence |
 |------------|-------|-----|----------|
 | <YYYY-MM-DD HH:MM:SS> | <event> | [F] | `<evidence file>` |
 | <YYYY-MM-DD> | <day-granular event> | [R] | ticket |
 | **<YYYY-MM-DD HH:MM:SS>** | <pivotal event — bold the time cell> | [F] | `<file>` |
+
+<!-- vale YLD.BannedWords = YES -->
 
 > **[A] <Confidence>: <the inference this phase supports>.** <Reasoning.>
 > <What would falsify it.> (Q<n>)
