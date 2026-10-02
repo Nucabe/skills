@@ -1,0 +1,7 @@
+{
+  "name": "zoom-out",
+  "displayName": "/zoom-out",
+  "description": "Tell the agent to zoom out and give broader context or a higher-level perspective.",
+  "version": "1.0.0",
+  "author": { "name": "YLD" }
+}

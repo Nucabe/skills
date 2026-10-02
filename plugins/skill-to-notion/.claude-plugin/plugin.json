@@ -1,0 +1,7 @@
+{
+  "name": "skill-to-notion",
+  "displayName": "/skill-to-notion",
+  "description": "Turns a workshop board (a task broken into six blocks, pasted as rough text from Miro) into a finished SKILL.md and a matching Notion skill page in the YLD format.",
+  "version": "1.0.0",
+  "author": { "name": "YLD" }
+}

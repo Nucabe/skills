@@ -1,0 +1,7 @@
+{
+  "name": "compare-ds-components",
+  "displayName": "/compare-ds-components",
+  "description": "Compares the same component (button, input, tabs, card) across two design systems from their Figma frames and writes a gap analysis with requirements to bring one system up to par.",
+  "version": "1.0.0",
+  "author": { "name": "YLD" }
+}

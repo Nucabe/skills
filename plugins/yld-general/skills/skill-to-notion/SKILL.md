@@ -45,11 +45,11 @@ The team decides which skill suite the skill goes in:
 
 | Team | Suite | Folder |
 |---|---|---|
-| Design | Design / Skill Suite | `plugins/yld-design/skills/` |
-| Marketing | Marketing / Skill Suite | `plugins/yld-marketing/skills/` |
-| Client Partner | Client Partners / Skill Suite | `plugins/yld-cp/skills/` |
-| Engineering | Engineering / Skill Suite | `plugins/yld-engineering/skills/` |
-| Any team | General / Skill Suite | `plugins/yld-general/skills/` |
+| Design | Design (Skill Suite) | `plugins/yld-design/skills/` |
+| Marketing | Marketing (Skill Suite) | `plugins/yld-marketing/skills/` |
+| Client Partner | Client Partners (Skill Suite) | `plugins/yld-cp/skills/` |
+| Engineering | Engineering (Skill Suite) | `plugins/yld-engineering/skills/` |
+| Any team | General (Skill Suite) | `plugins/yld-general/skills/` |
 
 If the board gives no team, suggest one and ask the person to confirm.
 

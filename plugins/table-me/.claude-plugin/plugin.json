@@ -1,0 +1,7 @@
+{
+  "name": "table-me",
+  "displayName": "/table-me",
+  "description": "Turn prose already discussed in this conversation into a comparison table, so the differences between the options become visible at a glance.",
+  "version": "1.0.0",
+  "author": { "name": "YLD" }
+}

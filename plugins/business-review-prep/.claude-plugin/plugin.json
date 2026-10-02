@@ -1,0 +1,7 @@
+{
+  "name": "business-review-prep",
+  "displayName": "/business-review-prep",
+  "description": "Drafts the slide content for a client business review from our documentation, financials and team input, tailored to what the client values most.",
+  "version": "1.0.0",
+  "author": { "name": "YLD" }
+}

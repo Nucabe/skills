@@ -1,0 +1,7 @@
+{
+  "name": "component-documentation",
+  "displayName": "/component-documentation",
+  "description": "Reads a design system component set in Figma and writes its documentation frame into the same file, beside the component - anatomy, every property and state, usage, accessibility and nested components.",
+  "version": "1.0.0",
+  "author": { "name": "YLD" }
+}
