@@ -1,0 +1,7 @@
+{
+  "name": "eli5",
+  "displayName": "/eli5",
+  "description": "Explain any topic, code, concept, or error tailored to a specific audience's level of understanding.",
+  "version": "1.0.0",
+  "author": { "name": "YLD" }
+}

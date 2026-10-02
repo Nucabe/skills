@@ -1,0 +1,7 @@
+{
+  "name": "interview-insights",
+  "displayName": "/interview-insights",
+  "description": "Turns a client interview or discovery call transcript into a list of every problem and need raised, each attributed to the person who said it, with a second pass for anything missed and a list of unclear comments.",
+  "version": "1.0.0",
+  "author": { "name": "YLD" }
+}

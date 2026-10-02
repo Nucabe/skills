@@ -1,0 +1,7 @@
+{
+  "name": "forensic-investigation",
+  "displayName": "/forensic-investigation",
+  "description": "Use when an incident needs investigating — a breach, credential abuse, unexpected spend or traffic, suspicious activity, data exposure — and the user asks to investigate, establish what happened, collect evidence, or build a timeline.",
+  "version": "1.0.0",
+  "author": { "name": "YLD" }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "forensic-report",
+  "displayName": "/forensic-report",
+  "description": "Use when writing, assembling or validating a forensic report or report package — after evidence has been collected, when the user asks to write up an investigation, produce findings, review a draft report, or check a package before release.",
+  "version": "1.0.0",
+  "author": { "name": "YLD" }
+}
